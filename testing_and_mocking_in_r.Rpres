@@ -1,0 +1,41 @@
+testing_and_mocking_in_r
+========================================================
+author:
+date:
+autosize: true
+
+Goal
+========================================================
+
+ * Understand the use of mocking in tests
+
+Problem
+========================================================
+
+ * You want to test all code
+ * You want the tests to pass fast
+
+Example
+========================================================
+
+
+```{r echo=FALSE}
+fasta_text <- c(
+  ">sp|P58511|SI11A_HUMAN Small integral membrane protein 11A",
+  "MNWKVLEHVPLLLYILAAKTLILCLTFAGVKMYQRKRLEAKQQKLEAERKKQSEKKDN"
+)
+fasta_filename <- "smim11a.fasta"
+readr::write_lines(fasta_text, fasta_filename)
+```
+
+```{r}
+library(pureseqtmr)
+pureseqtmr::predict_topology(fasta_filename)
+```
+
+Example
+========================================================
+
+```{r}
+cat(mock_predict_topologies_from_sequences(protein_sequence))
+```

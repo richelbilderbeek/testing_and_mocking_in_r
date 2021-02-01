@@ -37,3 +37,5 @@ vignettes/*.pdf
 
 # R Environment Variables
 .Renviron
+testing_and_mocking_in_r-figure/
+testing_and_mocking_in_r.md
