@@ -18,24 +18,25 @@ Problem
 Example
 ========================================================
 
-
-```{r echo=FALSE}
-fasta_text <- c(
-  ">sp|P58511|SI11A_HUMAN Small integral membrane protein 11A",
-  "MNWKVLEHVPLLLYILAAKTLILCLTFAGVKMYQRKRLEAKQQKLEAERKKQSEKKDN"
-)
-fasta_filename <- "smim11a.fasta"
-readr::write_lines(fasta_text, fasta_filename)
-```
-
 ```{r}
-library(pureseqtmr)
-pureseqtmr::predict_topology(fasta_filename)
+#' Do a complex calculation
+#' @param x a value
+#' @return a complex result
+do_it <- function(x) {
+  # Complex calculation here
+}
 ```
 
 Example
 ========================================================
 
 ```{r}
-cat(mock_predict_topologies_from_sequences(protein_sequence))
+#' Do a complex simulation
+#' @param filename name of the file
+#' that contains the x
+#' @return the results
+do_it_from_file <- function(filename) {
+  x <- read_x_from_file(filename)
+  do_it(x)
+}
 ```
