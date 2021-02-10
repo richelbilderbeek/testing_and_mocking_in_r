@@ -6,6 +6,8 @@ autosize: true
 `richel@richelbilderbeek.nl`
 [https://github.com/richelbilderbeek/testing_and_mocking_in_r](https://github.com/richelbilderbeek/testing_and_mocking_in_r)
 
+![](CC-BY-NC-SA.png)
+
 Goal
 ========================================================
 
@@ -53,6 +55,7 @@ Context: run_sim
 #' Run a simulation
 #' @param parameters one set of parameters
 #' @return a complex result
+#' @export
 run_sim <- function(parameters) {
   # Check input
 
@@ -130,8 +133,10 @@ A convenience function is added
 
 ```{r}
 #' Run one or more simulations
-#' @param parameters_list list of one or more parameters
+#' @param parameters_list list of
+#'   one or more parameters
 #' @return a list of results
+#' @export
 run_sims <- function(parameters_list) {
   # Call 'run_sim' once per parameter_set
 }
@@ -205,11 +210,7 @@ test_that("scenario 1 and 2", {
     create_test_parameters_2()
   )
   results_list <- run_sims(parameters_list)
-  expect_true(is.list(results_list))
-  expect_equal(
-    length(results_list),
-    length(parameters_list)
-  )
+  # ...
   expect_equal(results_list[[1]], 3.14)
   expect_equal(results_list[[2]], 2.72)
 })
@@ -218,7 +219,7 @@ test_that("scenario 1 and 2", {
 Why was that naive and idealistic?
 ========================================================
 
-We have already tested `run_sims` in multiple scenarios.
+We have already tested `run_sim` in multiple scenarios.
 
 No need to check these outcomes again!
 
@@ -343,11 +344,27 @@ library(mockr)
 
 ![](rainbow_dash_10.png)
 
+The plan
+========================================================
+
+We test `run_sims`,
+but instead of using `run_sim`,
+we use `mock_run_sim`.
+
+We swap out a complex function call by a simpler one.
+
+***
+
+![](rainbow_dash_10.png)
 
 Mock function
 ========================================================
 
 ```{r}
+#' Mock the run of a simulation
+#' @param parameters one set of parameters
+#' @return a complex result
+#' @export
 mock_run_sim <- function(parameters) {
   # Check input
 
@@ -488,7 +505,9 @@ Conclusion
 Questions?
 ========================================================
 
-![](friendship_is_magic_below.png)
-
 `richel@richelbilderbeek.nl`
 [https://github.com/richelbilderbeek/testing_and_mocking_in_r](https://github.com/richelbilderbeek/testing_and_mocking_in_r)
+
+![](CC-BY-NC-SA.png)
+
+Join the `informalr` R team: [https://github.com/informalr](https://github.com/informalr)
